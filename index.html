@@ -16,44 +16,27 @@
   <link rel="stylesheet" href="style.css">
 
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HBR72XDMD2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-HBR72XDMD2');
-</script>
-  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HBR72XDMD2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HBR72XDMD2');
+  </script>
 </head>
 <body>
   <header class="header">
-    <a class="brand" href="#inicio" aria-label="BManager - início">
-      <img src="assets/logo-b.svg" alt="Símbolo BManager">
-      <span>BManager</span>
-    </a>
+    <a class="brand" href="#inicio" aria-label="BManager - início"><img src="assets/logo-b.svg" alt="Símbolo BManager"><span>BManager</span></a>
     <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
-    <nav class="nav">
-      <a href="#servicos">Serviços</a><a href="#material">Material gratuito</a><a href="#sobre">Sobre mim</a><a href="#contato" class="nav-cta">Fale comigo</a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="#servicos">Serviços</a><a href="#material">Material gratuito</a><a href="#conteudos">Conteúdos</a><a href="#sobre">Sobre mim</a><a href="#contato" class="nav-cta">Fale comigo</a>
     </nav>
   </header>
 
   <main>
     <section class="hero" id="inicio">
-      <div class="hero-copy reveal">
-        <span class="eyebrow">Gestão inteligente para empresas que querem crescer</span>
-        <h1>Transformando números em <em>decisões estratégicas.</em></h1>
-        <p>Gestão financeira, fluxo de caixa e planejamento com clareza, organização e foco no que realmente move o seu negócio.</p>
-        <div class="actions">
-         <a class="btn primary" href="https://wa.me/5521992165723" target="_blank" rel="noopener">Solicitar uma conversa</a>
-          <a class="btn secondary" href="#servicos">Conheça os serviços</a>
-        </div>
-        <div class="hero-points"><span>Clareza</span><span>Organização</span><span>Estratégia</span></div>
-      </div>
-      <div class="hero-card reveal">
-        <div class="metric"><small>Visão financeira</small><strong>Mais controle</strong><div class="line"></div></div>
-        <div class="mini-grid"><div><b>Fluxo de caixa</b><span>Entradas, saídas e projeções</span></div><div><b>Indicadores</b><span>Decisões baseadas em dados</span></div></div>
-      </div>
+      <div class="hero-copy reveal"><span class="eyebrow">Gestão inteligente para empresas que querem crescer</span><h1>Transformando números em <em>decisões estratégicas.</em></h1><p>Gestão financeira, fluxo de caixa e planejamento com clareza, organização e foco no que realmente move o seu negócio.</p><div class="actions"><a class="btn primary" href="https://wa.me/5521992165723" target="_blank" rel="noopener">Solicitar uma conversa</a><a class="btn secondary" href="#servicos">Conheça os serviços</a></div><div class="hero-points"><span>Clareza</span><span>Organização</span><span>Estratégia</span></div></div>
+      <div class="hero-card reveal"><div class="metric"><small>Visão financeira</small><strong>Mais controle</strong><div class="line"></div></div><div class="mini-grid"><div><b>Fluxo de caixa</b><span>Entradas, saídas e projeções</span></div><div><b>Indicadores</b><span>Decisões baseadas em dados</span></div></div></div>
     </section>
 
     <section class="section" id="servicos">
@@ -73,15 +56,33 @@
       <div class="dashboard reveal"><div class="dash-top"><span>Fluxo de caixa</span><b>Visão mensal</b></div><div class="bars"><i style="height:42%"></i><i style="height:68%"></i><i style="height:53%"></i><i style="height:86%"></i><i style="height:72%"></i><i style="height:95%"></i></div><div class="dash-values"><div><small>Entradas</small><strong>R$ 84.200</strong></div><div><small>Saldo</small><strong>R$ 19.460</strong></div></div></div>
     </section>
 
-    <section class="about section" id="sobre">
-      <div class="portrait reveal"><img src="assets/barbara.jpg" alt="Bárbara March, fundadora da BManager"></div>
-      <div class="about-copy reveal"><span class="eyebrow">Quem está por trás da BManager</span><h2>Experiência financeira aplicada de forma prática.</h2><p>Sou <strong>Bárbara March</strong>, Analista Financeira Sênior com mais de 5 anos de experiência em planejamento financeiro, fluxo de caixa, controle de liquidez, modelagem e análise de performance.</p><p>Minha trajetória inclui atuação em um grande grupo hospitalar, integração financeira de M&A, elaboração de DFC para reporte regulatório e projetos de melhoria de processos e automação de relatórios.</p><div class="credentials"><span>MBA em Finanças</span><span>Especialização FGV</span><span>Administração</span><span>Inglês fluente</span></div></div>
+    <section class="learning section" id="conteudos">
+      <div class="learning-intro reveal">
+        <span class="eyebrow">Conteúdo gratuito</span>
+        <h2>📚 Vem aprender comigo!</h2>
+        <p>Acredito que uma boa gestão financeira começa pelo conhecimento. Por isso, compartilho no Pinterest conteúdos básicos, práticos e gratuitos sobre fluxo de caixa, organização financeira, planejamento e indicadores.</p>
+        <p>São conceitos essenciais para quem está começando e quer tomar decisões com mais clareza e segurança no seu negócio.</p>
+        <a class="btn pinterest-btn" href="https://pin.it/6k6QncwX9" target="_blank" rel="noopener noreferrer">Ver todos os conteúdos no Pinterest <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="pins-grid" aria-label="Conteúdos em destaque">
+        <article class="pin-card reveal">
+          <a class="pin-cover" href="https://pin.it/6k6QncwX9" target="_blank" rel="noopener noreferrer" aria-label="Ver 5 sinais de que seu fluxo de caixa está desorganizado no Pinterest">
+            <span class="pin-brand">BManager</span>
+            <span class="pin-series">Gestão financeira sem complicação</span>
+            <strong><span class="pin-number">5</span> sinais de que seu fluxo de caixa está desorganizado</strong>
+            <span class="pin-decoration" aria-hidden="true"></span>
+          </a>
+          <div class="pin-info"><span class="pin-label">Conteúdo em destaque</span><h3>5 sinais de que seu fluxo de caixa está desorganizado</h3><a href="https://pin.it/6k6QncwX9" target="_blank" rel="noopener noreferrer">Ver no Pinterest <span aria-hidden="true">→</span></a></div>
+        </article>
+      </div>
     </section>
 
-    <section class="contact" id="contato">
-      <div><span class="eyebrow">Contato</span><h2>Vamos conversar?</h2><p>Conte um pouco sobre o seu desafio financeiro e vamos entender a melhor forma de organizar e fortalecer a gestão do seu negócio.</p></div>
-      <div class="contact-links"><a href="https://wa.me/5521992165723" target="_blank" rel="noopener"><small>WhatsApp</small><strong>(21) 99216-5723</strong></a><a href="mailto:barbaramarchmorgado@icloud.com"><small>E-mail</small><strong>barbaramarchmorgado@icloud.com</strong></a></div>
+    <section class="about section" id="sobre">
+      <div class="portrait reveal"><img src="assets/barbara.jpg" alt="Bárbara March, fundadora da BManager"></div>
+      <div class="about-copy reveal"><span class="eyebrow">Quem está por trás da BManager</span><h2>Experiência financeira aplicada de forma prática.</h2><p>Sou <strong>Bárbara March</strong>, Analista Financeira Sênior com mais de 5 anos de experiência em planejamento financeiro, fluxo de caixa, controle de liquidez, modelagem e análise de performance.</p><p>Minha trajetória inclui atuação em um grande grupo hospitalar, integração financeira de M&amp;A, elaboração de DFC para reporte regulatório e projetos de melhoria de processos e automação de relatórios.</p><div class="credentials"><span>MBA em Finanças</span><span>Especialização FGV</span><span>Administração</span><span>Inglês fluente</span></div></div>
     </section>
+
+    <section class="contact" id="contato"><div><span class="eyebrow">Contato</span><h2>Vamos conversar?</h2><p>Conte um pouco sobre o seu desafio financeiro e vamos entender a melhor forma de organizar e fortalecer a gestão do seu negócio.</p></div><div class="contact-links"><a href="https://wa.me/5521992165723" target="_blank" rel="noopener"><small>WhatsApp</small><strong>(21) 99216-5723</strong></a><a href="mailto:barbaramarchmorgado@icloud.com"><small>E-mail</small><strong>barbaramarchmorgado@icloud.com</strong></a></div></section>
   </main>
 
   <footer><a class="brand footer-brand" href="#inicio"><img src="assets/logo-b.svg" alt=""><span>BManager</span></a><p>Gestão inteligente para empresas que querem crescer.</p><small>© 2026 BManager. Todos os direitos reservados.</small></footer>
