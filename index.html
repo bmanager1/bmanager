@@ -15,6 +15,154 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
+  <style>
+    /* Teste BManager — bloco independente para não exigir alteração no style.css */
+    .bmanager-test {
+      margin: 0 auto;
+      padding: 78px max(24px, calc((100% - 1180px) / 2));
+      background: #f3eee5;
+      color: #263129;
+      border-top: 1px solid rgba(38,49,41,.16);
+      border-bottom: 1px solid rgba(38,49,41,.16);
+    }
+    .bmanager-test-window {
+      border: 2px solid #263129;
+      background: #fbf7ef;
+      box-shadow: 10px 10px 0 rgba(51,72,59,.16);
+    }
+    .bmanager-test-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 8px 12px;
+      background: #33483b;
+      color: #fff;
+      font-family: monospace;
+      font-size: 13px;
+      letter-spacing: .05em;
+    }
+    .bmanager-test-controls {
+      display: flex;
+      gap: 5px;
+    }
+    .bmanager-test-controls span {
+      display: grid;
+      place-items: center;
+      width: 21px;
+      height: 21px;
+      border: 1px solid rgba(255,255,255,.85);
+      line-height: 1;
+    }
+    .bmanager-test-content {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      min-height: 390px;
+    }
+    .bmanager-test-copy {
+      padding: 54px;
+      border-right: 2px solid #263129;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .bmanager-test-kicker {
+      margin: 0 0 12px;
+      color: #a94941;
+      font-family: monospace;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .bmanager-test-copy h2 {
+      max-width: 720px;
+      margin: 0 0 18px;
+      color: #33483b;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(36px, 5vw, 62px);
+      line-height: .98;
+    }
+    .bmanager-test-copy p {
+      max-width: 650px;
+      margin: 0 0 25px;
+      font-size: 17px;
+      line-height: 1.6;
+    }
+    .bmanager-test-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 20px;
+      background: #33483b;
+      color: #fff;
+      border: 2px solid #263129;
+      box-shadow: 4px 4px 0 #263129;
+      text-decoration: none;
+      font-weight: 700;
+      transition: .12s ease;
+    }
+    .bmanager-test-btn:hover {
+      transform: translate(2px,2px);
+      box-shadow: 2px 2px 0 #263129;
+    }
+    .bmanager-test-visual {
+      padding: 36px;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 1px 1px, rgba(51,72,59,.16) 1px, transparent 1.3px),
+        #e8e1d6;
+      background-size: 15px 15px;
+    }
+    .bmanager-test-monitor {
+      width: min(290px, 100%);
+      border: 3px solid #263129;
+      background: #d5cec3;
+      padding: 16px;
+      box-shadow: 7px 7px 0 rgba(38,49,41,.14);
+    }
+    .bmanager-test-screen {
+      aspect-ratio: 4 / 3;
+      padding: 22px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      border: 4px inset #aaa196;
+      background: #33483b;
+      color: #fff;
+      font-family: monospace;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    .bmanager-test-screen strong {
+      display: block;
+      margin-top: 13px;
+      color: #efe1a2;
+      font-size: 22px;
+      letter-spacing: 3px;
+    }
+    .bmanager-test-note {
+      margin: 17px 0 0;
+      text-align: center;
+      color: #666e68;
+      font-family: monospace;
+      font-size: 12px;
+    }
+    @media (max-width: 760px) {
+      .bmanager-test { padding: 52px 18px; }
+      .bmanager-test-content { grid-template-columns: 1fr; }
+      .bmanager-test-copy {
+        padding: 34px 24px;
+        border-right: 0;
+        border-bottom: 2px solid #263129;
+      }
+      .bmanager-test-visual { padding: 34px 24px; }
+      .bmanager-test-window { box-shadow: 6px 6px 0 rgba(51,72,59,.16); }
+    }
+  </style>
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-HBR72XDMD2"></script>
   <script>
@@ -29,7 +177,7 @@
     <a class="brand brand-official" href="#inicio" aria-label="BManager - início"><img src="assets/logo-oficial-bmanager.png" alt="Logo BManager"></a>
     <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
     <nav class="nav" aria-label="Navegação principal">
-      <a href="#servicos">Serviços</a><a href="#biblioteca">Biblioteca</a><a href="#conteudos">Conteúdos</a><a href="#sobre">Sobre mim</a><a href="#contato" class="nav-cta">Fale comigo</a>
+      <a href="#servicos">Serviços</a><a href="#biblioteca">Biblioteca</a><a href="#teste">Teste BManager</a><a href="#conteudos">Conteúdos</a><a href="#sobre">Sobre mim</a><a href="#contato" class="nav-cta">Fale comigo</a>
     </nav>
   </header>
 
@@ -63,7 +211,7 @@
         </article>
         <article class="resource-card reveal">
           <div class="resource-visual guide-visual" aria-hidden="true"><span>BManager</span><strong>Guia de<br>Fluxo de Caixa</strong><small>Entenda seus números.<br>Decida com mais clareza.</small></div>
-          <div class="resource-content"><span class="resource-type">Guia gratuito</span><h3>Guia de Fluxo de Caixa</h3><p>Conceitos essenciais para entender as movimentações da empresa, diferenciar caixa de resultado e identificar sinais que merecem atenção.</p><a class="btn resource-btn" href="assets/Guia-BManager-Fluxo-de-Caixa.pdf" download>Baixar gratuitamente <span aria-hidden="true">↓</span></a></div>
+          <div class="resource-content"><span class="resource-type">Guia gratuito</span><h3>Guia de Fluxo de Caixa</h3><p>Conceitos essenciais para entender as movimentações da empresa, diferenciar caixa de resultado e identificar sinais que merecem atenção.</p><span class="resource-status">PDF disponível em breve</span></div>
         </article>
       </div>
       <aside class="support-card reveal" id="apoie">
@@ -71,6 +219,33 @@
         <div><span class="eyebrow">Apoie este projeto</span><h3>Ajude a Biblioteca a continuar crescendo.</h3><p>Os conteúdos da Biblioteca BManager são gratuitos. Se eles ajudaram você, sua contribuição apoia a criação dos próximos materiais.</p></div>
         <a class="btn support-btn" href="https://link.mercadopago.com.br/bmanager" target="_blank" rel="noopener noreferrer" aria-label="Apoiar a Biblioteca BManager pelo Mercado Pago">Me paga um café? <span aria-hidden="true">↗</span></a>
       </aside>
+    </section>
+
+    <section class="bmanager-test" id="teste">
+      <div class="bmanager-test-window reveal">
+        <div class="bmanager-test-bar">
+          <span>BMANAGER_FINANCE_TEST.EXE</span>
+          <div class="bmanager-test-controls" aria-hidden="true"><span>_</span><span>□</span><span>×</span></div>
+        </div>
+        <div class="bmanager-test-content">
+          <div class="bmanager-test-copy">
+            <p class="bmanager-test-kicker">Teste BManager // edição 01</p>
+            <h2>Você tem gestão financeira ou só está pagando boletos?</h2>
+            <p>8 perguntas rápidas para descobrir como anda a organização financeira do seu negócio. Sem planilha traumática e sem julgamento.</p>
+            <a class="bmanager-test-btn" href="teste-financeiro.html">INICIAR TESTE ►</a>
+          </div>
+          <div class="bmanager-test-visual" aria-hidden="true">
+            <div>
+              <div class="bmanager-test-monitor">
+                <div class="bmanager-test-screen">
+                  <div>ANALISANDO<br>SEU FINANCEIRO...<strong>▓▓▓░░░</strong></div>
+                </div>
+              </div>
+              <p class="bmanager-test-note">tempo estimado: 2 minutos // sinceridade recomendada</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="learning section" id="conteudos">
