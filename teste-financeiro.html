@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Teste BManager: descubra o nível de organização financeira do seu negócio." />
+  <title>Teste BManager | Seu financeiro está organizado?</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700&family=VT323&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --green:#33483b;
+      --sage:#aebaa8;
+      --off:#f4efe7;
+      --red:#a94941;
+      --gray:#6f746f;
+      --ink:#20231f;
+      --paper:#fbf7f0;
+      --line:#2b312b;
+      --shadow:#c7c0b5;
+    }
+
+    *{box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      font-family:"DM Sans", sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 1px 1px, rgba(32,35,31,.12) 1px, transparent 1.2px),
+        var(--off);
+      background-size:18px 18px;
+      min-height:100vh;
+    }
+
+    button, a{font:inherit}
+
+    .page{
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      padding:32px 18px;
+    }
+
+    .shell{
+      width:min(980px, 100%);
+      background:var(--paper);
+      border:2px solid var(--line);
+      box-shadow:10px 10px 0 rgba(51,72,59,.18);
+    }
+
+    .window-bar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      padding:8px 10px;
+      background:var(--green);
+      color:#fff;
+      border-bottom:2px solid var(--line);
+      font-family:"VT323", monospace;
+      letter-spacing:.06em;
+      font-size:1.15rem;
+    }
+
+    .window-actions{
+      display:flex;
+      gap:4px;
+    }
+
+    .window-actions span{
+      width:22px;
+      height:22px;
+      display:grid;
+      place-items:center;
+      border:1px solid #fff;
+      line-height:1;
+    }
+
+    .screen{
+      display:none;
+      min-height:590px;
+    }
+
+    .screen.active{display:grid}
+
+    /* START */
+    #start-screen{
+      grid-template-columns:1.05fr .95fr;
+    }
+
+    .hero-copy{
+      padding:54px 48px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      border-right:2px solid var(--line);
+    }
+
+    .eyebrow{
+      font-family:"VT323", monospace;
+      font-size:1.35rem;
+      letter-spacing:.08em;
+      margin:0 0 12px;
+      color:var(--red);
+      text-transform:uppercase;
+    }
+
+    h1,h2,h3,p{margin-top:0}
+
+    h1{
+      font-family:"Playfair Display", serif;
+      font-size:clamp(2.8rem,6vw,5.4rem);
+      line-height:.92;
+      margin-bottom:24px;
+      color:var(--green);
+    }
+
+    .hero-copy .lead{
+      font-size:1.08rem;
+      line-height:1.6;
+      max-width:520px;
+      margin-bottom:28px;
+    }
+
+    .retro-btn{
+      appearance:none;
+      border:2px solid var(--line);
+      background:var(--sage);
+      color:var(--ink);
+      padding:14px 18px;
+      cursor:pointer;
+      font-weight:700;
+      box-shadow:4px 4px 0 var(--line);
+      transition:.12s ease;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+    }
+
+    .retro-btn:hover{
+      transform:translate(2px,2px);
+      box-shadow:2px 2px 0 var(--line);
+    }
+
+    .retro-btn.primary{
+      background:var(--green);
+      color:#fff;
+    }
+
+    .retro-btn.danger{
+      background:var(--red);
+      color:#fff;
+    }
+
+    .start-btn{align-self:flex-start}
+
+    .hero-side{
+      padding:36px;
+      display:grid;
+      place-items:center;
+      background:
+        linear-gradient(rgba(244,239,231,.83),rgba(244,239,231,.83)),
+        repeating-linear-gradient(0deg, transparent 0 14px, rgba(51,72,59,.08) 14px 15px);
+    }
+
+    .computer{
+      width:min(330px,100%);
+    }
+
+    .monitor{
+      border:3px solid var(--line);
+      background:#d9d3c9;
+      padding:18px;
+      box-shadow:8px 8px 0 rgba(32,35,31,.13);
+    }
+
+    .monitor-screen{
+      aspect-ratio:4/3;
+      background:var(--green);
+      color:#fff;
+      border:5px inset #a9a197;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      padding:20px;
+      font-family:"VT323", monospace;
+      font-size:1.55rem;
+      line-height:1.1;
+    }
+
+    .monitor-screen strong{
+      display:block;
+      font-size:2.2rem;
+      color:#f5e3a1;
+      margin-top:8px;
+    }
+
+    .stand{
+      width:45%;
+      height:40px;
+      margin:auto;
+      background:#d9d3c9;
+      border:3px solid var(--line);
+      border-top:0;
+    }
+
+    .base{
+      width:70%;
+      height:20px;
+      margin:auto;
+      background:#d9d3c9;
+      border:3px solid var(--line);
+    }
+
+    .tiny-note{
+      font-family:"VT323", monospace;
+      font-size:1.1rem;
+      margin-top:24px;
+      text-align:center;
+      color:var(--gray);
+    }
+
+    /* QUESTIONS */
+    #quiz-screen{
+      grid-template-rows:auto 1fr;
+    }
+
+    .quiz-top{
+      padding:18px 28px;
+      border-bottom:2px solid var(--line);
+      background:#ece6dc;
+    }
+
+    .status-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:18px;
+      margin-bottom:9px;
+      font-family:"VT323", monospace;
+      font-size:1.2rem;
+    }
+
+    .progress{
+      height:18px;
+      border:2px solid var(--line);
+      background:#fff;
+      overflow:hidden;
+    }
+
+    .progress-fill{
+      height:100%;
+      width:0;
+      background:repeating-linear-gradient(
+        90deg,
+        var(--green) 0 18px,
+        #708174 18px 22px
+      );
+      transition:width .25s ease;
+    }
+
+    .quiz-body{
+      padding:48px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+
+    .question-tag{
+      font-family:"VT323", monospace;
+      color:var(--red);
+      font-size:1.35rem;
+      margin-bottom:10px;
+    }
+
+    .question-title{
+      font-family:"Playfair Display", serif;
+      font-size:clamp(2rem,4vw,3.3rem);
+      line-height:1.05;
+      color:var(--green);
+      margin-bottom:30px;
+      max-width:800px;
+    }
+
+    .answers{
+      display:grid;
+      gap:14px;
+    }
+
+    .answer{
+      text-align:left;
+      border:2px solid var(--line);
+      padding:16px 18px;
+      background:#fffdf8;
+      cursor:pointer;
+      box-shadow:4px 4px 0 var(--shadow);
+      transition:.12s ease;
+      line-height:1.45;
+    }
+
+    .answer:hover{
+      transform:translate(2px,2px);
+      box-shadow:2px 2px 0 var(--shadow);
+      background:#edf1ec;
+    }
+
+    .answer b{
+      font-family:"VT323", monospace;
+      font-size:1.35rem;
+      margin-right:5px;
+      color:var(--red);
+    }
+
+    /* RESULT */
+    #result-screen{
+      grid-template-columns:1fr .85fr;
+    }
+
+    .result-main{
+      padding:48px;
+      border-right:2px solid var(--line);
+    }
+
+    .result-label{
+      font-family:"VT323", monospace;
+      color:var(--red);
+      font-size:1.4rem;
+      margin-bottom:8px;
+    }
+
+    .result-title{
+      font-family:"Playfair Display", serif;
+      font-size:clamp(2.5rem,5vw,4.9rem);
+      line-height:.95;
+      color:var(--green);
+      margin-bottom:18px;
+    }
+
+    .result-percent{
+      font-family:"VT323", monospace;
+      font-size:2.3rem;
+      margin:16px 0 8px;
+    }
+
+    .meter{
+      height:28px;
+      border:2px solid var(--line);
+      background:#fff;
+      margin-bottom:26px;
+    }
+
+    .meter-fill{
+      height:100%;
+      width:0;
+      background:repeating-linear-gradient(
+        90deg,
+        var(--green) 0 22px,
+        var(--sage) 22px 27px
+      );
+      transition:width .6s ease;
+    }
+
+    .result-text{
+      line-height:1.65;
+      font-size:1.03rem;
+      margin-bottom:28px;
+    }
+
+    .result-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .result-side{
+      background:#ece6dc;
+      padding:32px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:18px;
+    }
+
+    .popup{
+      border:2px solid var(--line);
+      background:var(--paper);
+      box-shadow:6px 6px 0 var(--line);
+    }
+
+    .popup-title{
+      padding:7px 9px;
+      background:var(--green);
+      color:#fff;
+      font-family:"VT323", monospace;
+      font-size:1.15rem;
+      border-bottom:2px solid var(--line);
+    }
+
+    .popup-body{
+      padding:20px;
+      line-height:1.5;
+    }
+
+    .popup-body p:last-child{margin-bottom:0}
+
+    .share-note{
+      font-family:"VT323", monospace;
+      font-size:1.15rem;
+      color:var(--gray);
+    }
+
+    footer{
+      text-align:center;
+      padding:18px;
+      font-size:.85rem;
+      color:var(--gray);
+    }
+
+    @media (max-width:760px){
+      .page{padding:14px 10px}
+      .shell{box-shadow:5px 5px 0 rgba(51,72,59,.18)}
+      #start-screen,
+      #result-screen{
+        grid-template-columns:1fr;
+      }
+      .hero-copy,
+      .result-main{
+        border-right:0;
+        border-bottom:2px solid var(--line);
+      }
+      .hero-copy,
+      .hero-side,
+      .quiz-body,
+      .result-main,
+      .result-side{
+        padding:28px 22px;
+      }
+      .screen{min-height:auto}
+      .hero-side{min-height:320px}
+      .quiz-body{min-height:520px}
+      h1{font-size:3rem}
+      .question-title{font-size:2.1rem}
+      .result-title{font-size:2.8rem}
+      .result-actions{
+        flex-direction:column;
+      }
+      .retro-btn{width:100%}
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <div class="shell">
+      <div class="window-bar">
+        <span>BMANAGER_FINANCE_TEST.EXE</span>
+        <div class="window-actions" aria-hidden="true">
+          <span>_</span><span>□</span><span>×</span>
+        </div>
+      </div>
+
+      <section id="start-screen" class="screen active">
+        <div class="hero-copy">
+          <p class="eyebrow">TESTE BMANAGER // edição 01</p>
+          <h1>Você tem gestão financeira ou só está pagando boletos?</h1>
+          <p class="lead">
+            Responda 8 perguntas rápidas e descubra como anda a organização
+            financeira do seu negócio — sem planilha traumática e sem julgamento.
+          </p>
+          <button class="retro-btn primary start-btn" id="start-btn">INICIAR TESTE ►</button>
+        </div>
+
+        <div class="hero-side">
+          <div>
+            <div class="computer">
+              <div class="monitor">
+                <div class="monitor-screen">
+                  ANALISANDO<br>SEU FINANCEIRO...
+                  <strong>▓▓▓░░░</strong>
+                </div>
+              </div>
+              <div class="stand"></div>
+              <div class="base"></div>
+            </div>
+            <p class="tiny-note">tempo estimado: 2 minutos // nível de sinceridade: recomendado</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="quiz-screen" class="screen">
+        <div class="quiz-top">
+          <div class="status-row">
+            <span id="question-counter">PERGUNTA 1 DE 8</span>
+            <span id="score-status">STATUS: EM ANÁLISE</span>
+          </div>
+          <div class="progress" aria-label="Progresso do teste">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+        </div>
+
+        <div class="quiz-body">
+          <p class="question-tag" id="question-tag">PERGUNTA_01</p>
+          <h2 class="question-title" id="question-title"></h2>
+          <div class="answers" id="answers"></div>
+        </div>
+      </section>
+
+      <section id="result-screen" class="screen">
+        <div class="result-main">
+          <p class="result-label">RESULTADO_DO_TESTE.EXE</p>
+          <h2 class="result-title" id="result-title"></h2>
+
+          <div class="result-percent" id="result-percent"></div>
+          <div class="meter">
+            <div class="meter-fill" id="meter-fill"></div>
+          </div>
+
+          <p class="result-text" id="result-text"></p>
+
+          <div class="result-actions">
+            <button class="retro-btn" id="restart-btn">↻ FAZER DE NOVO</button>
+            <a class="retro-btn primary" href="index.html#servicos">CONHECER A BMANAGER ►</a>
+          </div>
+        </div>
+
+        <aside class="result-side">
+          <div class="popup">
+            <div class="popup-title">DICA_BMANAGER.TXT</div>
+            <div class="popup-body">
+              <p id="result-tip"></p>
+            </div>
+          </div>
+
+          <div class="popup">
+            <div class="popup-title">PARA_COMPARTILHAR.TXT</div>
+            <div class="popup-body">
+              <p>
+                Tirou um resultado que te representa? Faça um print e compartilhe
+                nos Stories marcando <strong>@bmanager.br</strong>.
+              </p>
+            </div>
+          </div>
+
+          <p class="share-note">* este teste é educativo e não substitui uma análise financeira individual.</p>
+        </aside>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    BManager — Gestão financeira inteligente
+  </footer>
+
+  <script>
+    const questions = [
+      {
+        text: "Quando você abre o aplicativo do banco da empresa...",
+        answers: [
+          ["A", "Já sei mais ou menos o saldo e o que ainda vai entrar ou sair.", 3],
+          ["B", "Confiro para entender como ficaram as coisas.", 2],
+          ["C", "É sempre uma pequena surpresa.", 1]
+        ]
+      },
+      {
+        text: "Você sabe quanto ainda tem para receber nos próximos 30 dias?",
+        answers: [
+          ["A", "Sim. Tenho os valores e vencimentos registrados.", 3],
+          ["B", "Sei os principais valores, mas preciso conferir.", 2],
+          ["C", "Só lembro quando o cliente paga — ou quando demora demais.", 1]
+        ]
+      },
+      {
+        text: "E as contas que ainda vão vencer?",
+        answers: [
+          ["A", "Estão registradas e entram na minha previsão de caixa.", 3],
+          ["B", "As maiores eu acompanho. O restante vai aparecendo.", 2],
+          ["C", "Os boletos gentilmente me avisam.", 1]
+        ]
+      },
+      {
+        text: "Você separa as movimentações pessoais das movimentações do negócio?",
+        answers: [
+          ["A", "Sim. As contas e registros são separados.", 3],
+          ["B", "Na maior parte do tempo, mas às vezes mistura.", 2],
+          ["C", "Meu Pix conhece a verdade.", 1]
+        ]
+      },
+      {
+        text: "Com que frequência você confere se os registros batem com o banco?",
+        answers: [
+          ["A", "Faço conciliação com frequência.", 3],
+          ["B", "Confiro quando percebo alguma diferença.", 2],
+          ["C", "Conciliação? Temos um relacionamento à distância.", 1]
+        ]
+      },
+      {
+        text: "Se alguém perguntasse quanto seu negócio gerou de caixa no último mês...",
+        answers: [
+          ["A", "Eu consigo responder olhando meus controles.", 3],
+          ["B", "Consigo chegar ao número depois de fazer algumas contas.", 2],
+          ["C", "Eu responderia: depende do que você chama de 'gerou'.", 1]
+        ]
+      },
+      {
+        text: "Você costuma comparar os números de um mês com os meses anteriores?",
+        answers: [
+          ["A", "Sim. Acompanho evolução, despesas e comportamento do caixa.", 3],
+          ["B", "Às vezes, principalmente quando algo parece diferente.", 2],
+          ["C", "Todo mês começa uma nova temporada.", 1]
+        ]
+      },
+      {
+        text: "Hoje, o financeiro do negócio depende de quanto da sua memória?",
+        answers: [
+          ["A", "Pouco. As informações importantes estão registradas.", 3],
+          ["B", "Mais do que eu gostaria.", 2],
+          ["C", "Minha memória é praticamente o sistema ERP.", 1]
+        ]
+      }
+    ];
+
+    const screens = {
+      start: document.getElementById("start-screen"),
+      quiz: document.getElementById("quiz-screen"),
+      result: document.getElementById("result-screen")
+    };
+
+    const questionTitle = document.getElementById("question-title");
+    const questionTag = document.getElementById("question-tag");
+    const questionCounter = document.getElementById("question-counter");
+    const answersBox = document.getElementById("answers");
+    const progressFill = document.getElementById("progress-fill");
+
+    let current = 0;
+    let score = 0;
+
+    function showScreen(name){
+      Object.values(screens).forEach(screen => screen.classList.remove("active"));
+      screens[name].classList.add("active");
+      window.scrollTo({top:0, behavior:"smooth"});
+    }
+
+    function startQuiz(){
+      current = 0;
+      score = 0;
+      showScreen("quiz");
+      renderQuestion();
+    }
+
+    function renderQuestion(){
+      const q = questions[current];
+
+      questionTitle.textContent = q.text;
+      questionTag.textContent = "PERGUNTA_" + String(current + 1).padStart(2, "0");
+      questionCounter.textContent = `PERGUNTA ${current + 1} DE ${questions.length}`;
+      progressFill.style.width = `${(current / questions.length) * 100}%`;
+
+      answersBox.innerHTML = "";
+
+      q.answers.forEach(([letter, text, points]) => {
+        const btn = document.createElement("button");
+        btn.className = "answer";
+        btn.innerHTML = `<b>${letter})</b> ${text}`;
+        btn.addEventListener("click", () => selectAnswer(points));
+        answersBox.appendChild(btn);
+      });
+    }
+
+    function selectAnswer(points){
+      score += points;
+      current += 1;
+
+      if(current < questions.length){
+        renderQuestion();
+      } else {
+        progressFill.style.width = "100%";
+        showResult();
+      }
+    }
+
+    function showResult(){
+      const minScore = questions.length;
+      const maxScore = questions.length * 3;
+
+      const percentage = Math.round(
+        ((score - minScore) / (maxScore - minScore)) * 100
+      );
+
+      let result;
+
+      if(score <= 13){
+        result = {
+          title: "NO MODO SOBREVIVÊNCIA",
+          text: "Seu financeiro provavelmente acontece conforme as coisas chegam. Você paga, recebe, resolve — mas ainda falta uma visão organizada do todo. O primeiro passo não é complicar: é registrar, separar e criar uma rotina mínima de acompanhamento.",
+          tip: "Comece por três bases: contas a pagar, contas a receber e conciliação bancária. Quando elas estão organizadas, o caixa começa a contar uma história muito mais clara."
+        };
+      } else if(score <= 19){
+        result = {
+          title: "FUNCIONA... MAS DEPENDE DE VOCÊ",
+          text: "Você já tem algum controle, mas parte importante da rotina ainda depende de memória, conferências manuais ou decisões tomadas em cima da hora. Existe uma base — agora o desafio é transformar controle em processo.",
+          tip: "Escolha um dia fixo da semana para revisar recebimentos, pagamentos, saldo e próximos compromissos. Frequência costuma valer mais do que complexidade."
+        };
+      } else {
+        result = {
+          title: "FINANCEIRO SOB CONTROLE",
+          text: "Você já construiu uma boa base de organização financeira. As informações não estão apenas na sua cabeça e existe algum nível de acompanhamento. O próximo passo é usar esses dados cada vez mais para planejamento e tomada de decisão.",
+          tip: "Com a operação organizada, comece a olhar tendências: evolução das despesas, comportamento do caixa, atrasos recorrentes e necessidade de capital nos próximos meses."
+        };
+      }
+
+      document.getElementById("result-title").textContent = result.title;
+      document.getElementById("result-percent").textContent = percentage + "% organizado";
+      document.getElementById("result-text").textContent = result.text;
+      document.getElementById("result-tip").textContent = result.tip;
+
+      showScreen("result");
+
+      requestAnimationFrame(() => {
+        document.getElementById("meter-fill").style.width = percentage + "%";
+      });
+    }
+
+    document.getElementById("start-btn").addEventListener("click", startQuiz);
+
+    document.getElementById("restart-btn").addEventListener("click", () => {
+      document.getElementById("meter-fill").style.width = "0";
+      startQuiz();
+    });
+  </script>
+</body>
+</html>
