@@ -207,11 +207,15 @@
       <div class="library-grid">
         <article class="resource-card reveal">
           <div class="resource-visual spreadsheet-visual" aria-hidden="true"><span>DFC</span><div class="sheet-lines"><i></i><i></i><i></i><i></i></div><strong>Fluxo de Caixa</strong></div>
-          <div class="resource-content"><span class="resource-type">Planilha gratuita</span><h3>Planilha de Fluxo de Caixa</h3><p>Uma estrutura prática para registrar entradas e saídas, acompanhar o saldo e começar a organizar a rotina financeira do seu negócio.</p><ul><li>Controle mensal</li><li>Visão consolidada</li><li>Arquivo editável em Excel</li></ul><a class="btn resource-btn" href="assets/DFC-BManager.xlsx" download>Baixar gratuitamente <span aria-hidden="true">↓</span></a></div>
+          <div class="resource-content"><span class="resource-type">Planilha gratuita</span><h3>Planilha de Fluxo de Caixa</h3><p>Uma estrutura prática para registrar entradas e saídas, acompanhar o saldo e começar a organizar a rotina financeira do seu negócio.</p><ul><li>Controle mensal</li><li>Visão consolidada</li><li>Arquivo editável em Excel</li></ul><button class="btn resource-btn lead-download" type="button" data-material="Planilha de Fluxo de Caixa" data-file="assets/DFC-BManager.xlsx">Baixar gratuitamente <span aria-hidden="true">↓</span></button></div>
         </article>
         <article class="resource-card reveal">
-          <div class="resource-visual guide-visual" aria-hidden="true"><span>BManager</span><strong>Guia de<br>Fluxo de Caixa</strong><small>Entenda seus números.<br>Decida com mais clareza.</small></div>
-          <div class="resource-content"><span class="resource-type">Guia gratuito</span><h3>Guia de Fluxo de Caixa</h3><p>Conceitos essenciais para entender as movimentações da empresa, diferenciar caixa de resultado e identificar sinais que merecem atenção.</p><span class="resource-status">PDF disponível em breve</span></div>
+          <div class="resource-visual guide-visual" aria-hidden="true"><span>Biblioteca BManager • Guia 01</span><strong>Guia de<br>Fluxo de Caixa</strong><small>Entenda seus números.<br>Decida com mais clareza.</small></div>
+          <div class="resource-content"><span class="resource-type">Guia gratuito</span><h3>Guia de Fluxo de Caixa</h3><p>Conceitos essenciais para entender as movimentações da empresa, diferenciar caixa de resultado e identificar sinais que merecem atenção.</p><button class="btn resource-btn lead-download" type="button" data-material="Guia 01 — Fluxo de Caixa" data-file="assets/guia-fluxo-de-caixa.pdf">Baixar gratuitamente <span aria-hidden="true">↓</span></button></div>
+        </article>
+        <article class="resource-card reveal">
+          <div class="resource-visual guide-visual guide-visual-two" aria-hidden="true"><span>Biblioteca BManager • Guia 02</span><strong>Contas a Pagar<br>&amp; Contas a Receber</strong><small>Organize compromissos.<br>Antecipe o que vem pela frente.</small></div>
+          <div class="resource-content"><span class="resource-type">Guia gratuito</span><h3>Contas a Pagar &amp; Contas a Receber</h3><p>Um guia prático para organizar compromissos, acompanhar vencimentos e entender como contas a pagar e a receber se conectam ao fluxo de caixa.</p><ul><li>O que registrar</li><li>Previsto, pago e recebido</li><li>Rotina e checklist de acompanhamento</li></ul><button class="btn resource-btn lead-download" type="button" data-material="Guia 02 — Contas a Pagar e Contas a Receber" data-file="assets/guia-contas-a-pagar-receber.pdf">Baixar gratuitamente <span aria-hidden="true">↓</span></button></div>
         </article>
       </div>
       <aside class="support-card reveal" id="apoie">
@@ -276,6 +280,26 @@
 
   <footer><a class="brand footer-brand brand-official" href="#inicio" aria-label="BManager - início"><img src="assets/logo-oficial-bmanager.png" alt="Logo BManager"></a><p>Gestão inteligente para empresas que querem crescer.</p><small>© 2026 BManager. Todos os direitos reservados.</small></footer>
   <a class="whatsapp" href="https://wa.me/5521992165723" target="_blank" rel="noopener" aria-label="Falar pelo WhatsApp">✦</a>
+
+  <div class="lead-modal" id="lead-modal" aria-hidden="true">
+    <div class="lead-modal-backdrop" data-close-lead-modal></div>
+    <div class="lead-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="lead-modal-title">
+      <button class="lead-modal-close" type="button" aria-label="Fechar" data-close-lead-modal>×</button>
+      <span class="eyebrow">Biblioteca BManager</span>
+      <h2 id="lead-modal-title">Seu material está quase aí.</h2>
+      <p>Preencha seus dados para liberar o download gratuito.</p>
+      <form id="lead-form">
+        <label for="lead-name">Nome</label>
+        <input id="lead-name" name="nome" type="text" autocomplete="name" required>
+        <label for="lead-email">E-mail</label>
+        <input id="lead-email" name="email" type="email" autocomplete="email" required>
+        <input id="lead-material" name="material" type="hidden">
+        <button class="btn primary lead-submit" type="submit">Liberar download ↓</button>
+        <p class="lead-privacy">Seus dados serão armazenados pela BManager para disponibilizar o material e acompanhar o interesse nos conteúdos da Biblioteca.</p>
+        <p class="lead-feedback" id="lead-feedback" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>

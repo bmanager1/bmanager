@@ -1,0 +1,30 @@
+# Atualização BManager — 17/08/2026
+
+## O que esta atualização faz
+- Disponibiliza o Guia 01 — Fluxo de Caixa.
+- Inclui o Guia 02 — Contas a Pagar & Contas a Receber.
+- Adiciona popup de Nome + E-mail antes dos downloads da Biblioteca.
+- Envia DATA, NOME, EMAIL e MATERIAL para a planilha Leads BManager via Google Apps Script.
+- Mantém o Teste BManager e as demais seções da versão Site.15.08.
+
+## Arquivos para o GitHub
+Na raiz do repositório, substitua:
+- index.html
+- style.css
+- script.js
+
+Dentro da pasta assets, adicione:
+- guia-fluxo-de-caixa.pdf
+- guia-contas-a-pagar-receber.pdf
+
+Não apague os outros arquivos já existentes em assets.
+
+## Arquivo que NÃO vai para o GitHub
+- apps-script-backup.gs — é apenas um backup do código já implantado no Google Apps Script.
+
+## Teste depois da publicação
+1. Abra o site em janela anônima.
+2. Clique em Baixar gratuitamente em cada material.
+3. Preencha Nome e E-mail.
+4. Confirme se o download começa.
+5. Confirme se a planilha Leads BManager recebe Data, Nome, Email e Material.
