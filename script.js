@@ -1,7 +1,7 @@
 const toggle=document.querySelector('.menu-toggle');const nav=document.querySelector('.nav');toggle?.addEventListener('click',()=>{const open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',open)});document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 // Biblioteca BManager — popup + Google Sheets (Apps Script)
-const LEADS_ENDPOINT='https://script.google.com/macros/s/AKfycbxVWcTbqjYsg-iOcsVzKNFtwGzcWHGpAZetLefaoOKNPm1aZJFxE5Ai0_3c0E-lXpbF/exec';
+const LEADS_ENDPOINT='https://script.google.com/macros/s/AKfycby7FOgs-FHnRqqFP6uxAGNxe8vyDkK1xX_hXjZVUc6lUSsj9QvqK38c1xzwDE8oLCGJ/exec';
 const leadModal=document.querySelector('#lead-modal');
 const leadForm=document.querySelector('#lead-form');
 const leadName=document.querySelector('#lead-name');
